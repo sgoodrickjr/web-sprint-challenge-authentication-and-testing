@@ -20,4 +20,9 @@ describe("users integration tests", () => {
         expect(res.type).toBe("application/json")
        
     })
+
+    it("returns an error for a user that doesn't exist", async () => {
+        const res = await supertest(server).get("/users/100")
+        expect(res.statusCode).toBe(404)
+    })
 })
